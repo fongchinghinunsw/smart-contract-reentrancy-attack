@@ -18,4 +18,20 @@ contract SafeBankV1 {
         console.log("didSend:", didSend);
         balanceOf[msg.sender] = 0;
     }
+
+    // function withdraw() external {
+    //     uint256 depositedAmount = balanceOf[msg.sender];
+    //     // forward a fixed amount of 2300 gas, raises an exception if failed
+    //     payable(msg.sender).transfer(depositedAmount);
+    //     balanceOf[msg.sender] = 0;
+    // }
+
+    // function withdraw() external {
+    //     uint256 depositedAmount = balanceOf[msg.sender];
+    //     // forward a fixed amount of 2300 gas, raises an exception if failed
+    //     // same as payable(msg.sender).call({value: depositedAmount, gas: 2300});
+    //     payable(msg.sender).call{value: depositedAmount, gas: 2300}("");
+    //     balanceOf[msg.sender] = 0;
+    // }
 }
+

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract SafeBankV2 {
+contract SafeBankV3 {
     mapping(address => uint256) public balanceOf;
 
     function deposit() external payable {
@@ -10,8 +10,7 @@ contract SafeBankV2 {
 
     function withdraw() external {
         uint256 depositedAmount = balanceOf[msg.sender];
-        // forward a fixed amount of 2300 gas, raises an exception if failed
-        payable(msg.sender).transfer(depositedAmount);
         balanceOf[msg.sender] = 0;
+        payable(msg.sender).call{value: depositedAmount}("");
     }
 }

@@ -10,6 +10,7 @@ contract Bank {
 
     function withdraw() external {
         uint256 depositedAmount = balanceOf[msg.sender];
+        // same as payable(msg.sender).call({value: depositedAmount});
         payable(msg.sender).call{value: depositedAmount}("");
         balanceOf[msg.sender] = 0;
     }
